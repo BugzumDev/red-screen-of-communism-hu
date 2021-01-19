@@ -1,18 +1,19 @@
-progress = document.querySelector(".progress");
-
-console.log(progress)
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function randomNumber(min, max) {
-    const r = Math.random() * (max - min) + min
-    return Math.floor(r)
+    const r = Math.random() * (max - min) + min;
+    return Math.floor(r);
 }
 
-for (var i = 5; i < 100; i++) {
-    progress = "Deleting files. " + i + "% complete";
-    console.log(progress, i)
-    sleep(1000)
+var i = 1;
+
+function myLoop() {
+    randomNum = randomNumber(100, 4500)
+    setTimeout(function () {
+        document.getElementsByTagName('h1')[2].innerHTML = "Deleting files. " + i + "% complete";
+        i++;
+        if (i < 101) {
+            myLoop();
+        }
+    }, randomNum)
 }
+
+myLoop();
